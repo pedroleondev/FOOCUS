@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nova Tarefa e Estimativa de Foco</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #10b981;
+            --accent: #f97316;
+            --background-light: #f8fafc;
+            --background-dark: #0f172a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10b981",
+                        accent: "#f97316",
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-900 dark:text-slate-100 transition-colors duration-200 overflow-hidden">
+<div class="fixed inset-0 z-0 overflow-y-auto p-8 opacity-20 grayscale-[0.4]">
+<header class="max-w-6xl mx-auto mb-12 flex justify-between items-end">
+<div>
+<p class="text-primary font-bold text-sm uppercase tracking-widest mb-2">Foco Total</p>
+<h1 class="text-4xl font-bold">Sessão Ativa</h1>
+</div>
+<div class="text-right">
+<p class="text-5xl font-black font-mono">24:58</p>
+<p class="text-slate-500 text-sm">Pomodoro 1/4</p>
+</div>
+</header>
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-[32px] border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center justify-center min-h-[400px]">
+<div class="w-64 h-64 rounded-full border-8 border-slate-100 dark:border-slate-800 flex items-center justify-center relative">
+<div class="absolute inset-0 border-8 border-primary rounded-full border-t-transparent -rotate-45"></div>
+<span class="material-symbols-outlined text-7xl text-primary">timer</span>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h2 class="text-xl font-bold px-2">Próximas Tarefas</h2>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 opacity-50">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">description</span>
+</div>
+<div>
+<p class="font-bold">Revisar Documentação</p>
+<p class="text-xs text-slate-500">2 Pomodoros</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md">
+<div class="bg-white dark:bg-slate-900 w-full max-w-xl rounded-[32px] shadow-2xl border border-white/20 dark:border-slate-800 overflow-hidden">
+<div class="p-8 md:p-10">
+<div class="flex justify-between items-start mb-8">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-primary text-xs font-bold uppercase tracking-wider mb-3">
+<span class="material-symbols-outlined text-sm filled-icon">add_task</span>
+                        Nova Tarefa
+                    </div>
+<h2 class="text-3xl font-bold tracking-tight">O que vamos focar agora?</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Defina sua tarefa e estime o esforço necessário.</p>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-400">close</span>
+</button>
+</div>
+<form class="space-y-6">
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Título da Tarefa</label>
+<input class="w-full px-5 py-4 rounded-2xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-lg font-medium" placeholder="Ex: Refatorar módulo de autenticação" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Subtítulo / Notas</label>
+<input class="w-full px-5 py-3 rounded-2xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-base" placeholder="Detalhes adicionais ou contexto..." type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Tema</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">category</span>
+<select class="w-full pl-12 pr-10 py-3.5 rounded-2xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary focus:border-primary appearance-none outline-none font-medium">
+<option value="dev">💻 Desenvolvimento</option>
+<option value="escrita">✍️ Escrita</option>
+<option value="reuniao">🤝 Reunião</option>
+<option value="estudo">📚 Estudo</option>
+<option value="design">🎨 Design</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Estimativa de Esforço</label>
+<div class="flex items-center bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-1">
+<button class="w-11 h-11 flex items-center justify-center rounded-xl hover:bg-white dark:hover:bg-slate-700 text-slate-400 transition-all" type="button">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="flex-1 flex flex-col items-center justify-center px-2">
+<div class="flex items-center gap-1">
+<span class="text-xl font-bold">3</span>
+<span class="material-symbols-outlined text-red-500 filled-icon text-lg">nutrition</span>
+</div>
+<span class="text-[10px] text-slate-400 font-bold uppercase">Pomodoros</span>
+</div>
+<button class="w-11 h-11 flex items-center justify-center rounded-xl hover:bg-white dark:hover:bg-slate-700 text-slate-400 transition-all" type="button">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex gap-1.5 py-2 px-1">
+<div class="h-1.5 flex-1 bg-red-500 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-red-500 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-red-500 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="h-1.5 flex-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+</div>
+<div class="pt-6 flex flex-col sm:flex-row gap-4">
+<button class="flex-1 py-4 px-6 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300" type="button">
+                        Cancelar
+                    </button>
+<button class="flex-[2] py-4 px-6 bg-primary hover:bg-emerald-600 text-white rounded-2xl font-bold shadow-xl shadow-emerald-500/20 transition-all transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined">move_to_inbox</span>
+                        Adicionar ao Backlog
+                    </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl rounded-full px-8 py-3 flex items-center gap-12 z-50">
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Painel</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined filled-icon">timer</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Foco</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">task_alt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Hábitos</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Progresso</span>
+</button>
+</div>
+
+</body></html>

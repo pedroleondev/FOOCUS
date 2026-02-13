@@ -1,0 +1,10 @@
+node_modules
+.git
+.vscode
+*.log
+docker_build.log
+.env
+.env.example
+# .env.local is NOT ignored so it can be used for build
+/playwright-report
+/test-results

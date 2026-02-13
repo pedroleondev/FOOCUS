@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard de Execução Diária</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10b981", // Emerald 500
+                        secondary: "#f97316", // Orange 500
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .github-grid {
+            display: grid;
+            grid-template-columns: repeat(18, 1fr);
+            gap: 4px;
+        }
+        .github-cell {
+            aspect-ratio: 1;
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-200">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hidden md:flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-2 text-primary font-bold text-xl">
+<span class="material-icons-outlined">rocket_launch</span>
+<span>FOCUS</span>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 p-3 rounded-lg bg-primary/10 text-primary font-medium" href="#">
+<span class="material-icons-outlined">dashboard</span> Execução
+                </a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400" href="#">
+<span class="material-icons-outlined">edit_note</span> Plano
+                </a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400" href="#">
+<span class="material-icons-outlined">ads_click</span> Objetivos
+                </a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400" href="#">
+<span class="material-icons-outlined">insights</span> Relatórios
+                </a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-outlined">dark_mode</span> Tema
+                </button>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-10">
+<div class="max-w-6xl mx-auto mb-10">
+<div class="flex flex-col items-center">
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-1">Sábado</span>
+<div class="flex items-center gap-8">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">chevron_left</span>
+</button>
+<h1 class="text-3xl font-extrabold text-slate-800 dark:text-white">3 de janeiro</h1>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">chevron_right</span>
+</button>
+</div>
+<span class="mt-2 px-4 py-1 bg-primary text-white text-xs font-bold rounded-full uppercase tracking-tighter">Hoje</span>
+</div>
+</div>
+<div class="max-w-6xl mx-auto space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center gap-4">
+<div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 text-secondary rounded-xl flex items-center justify-center">
+<span class="material-icons-outlined">local_fire_department</span>
+</div>
+<div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Sequência de Dias</p>
+<p class="text-2xl font-bold">12 dias <span class="text-xs text-secondary font-normal ml-1">Fogo!</span></p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-end mb-2">
+<div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Atividades Concluídas</p>
+<p class="text-2xl font-bold">2/3</p>
+</div>
+<span class="material-icons-outlined text-primary">task_alt</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[66%]"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-end mb-2">
+<div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Progresso do Objetivo</p>
+<p class="text-2xl font-bold">25%</p>
+</div>
+<span class="material-icons-outlined text-blue-500">emoji_events</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-blue-500 h-full w-[25%]"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-5 space-y-6">
+<section class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-center mb-4">
+<h2 class="flex items-center gap-2 font-bold text-slate-700 dark:text-slate-200">
+<span class="material-icons-outlined text-primary">track_changes</span> FOCO DO DIA
+                                </h2>
+<span class="text-xs font-semibold text-slate-400 uppercase">2/3 concluídas</span>
+</div>
+<div class="space-y-3">
+<div class="p-4 rounded-xl border-l-4 border-primary bg-primary/5 dark:bg-primary/10 flex items-start gap-3">
+<div class="mt-1 w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="material-icons-outlined text-xs text-primary">check</span>
+</div>
+<div>
+<p class="text-xs font-bold text-primary uppercase">Atividade 1</p>
+<p class="text-sm text-slate-600 dark:text-slate-300">Decidir o nome do projeto</p>
+</div>
+</div>
+<div class="p-4 rounded-xl border-l-4 border-primary bg-primary/5 dark:bg-primary/10 flex items-start gap-3">
+<div class="mt-1 w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="material-icons-outlined text-xs text-primary">check</span>
+</div>
+<div>
+<p class="text-xs font-bold text-primary uppercase">Atividade 2</p>
+<p class="text-sm text-slate-600 dark:text-slate-300">Definir guia de estilos visuais</p>
+</div>
+</div>
+<div class="p-4 rounded-xl border-l-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 flex items-start gap-3 border border-slate-100 dark:border-slate-800">
+<div class="mt-1 w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-600"></div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Atividade 3</p>
+<p class="text-sm text-slate-600 dark:text-slate-300">Fazer pesquisa de mercado inicial</p>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<h2 class="flex items-center gap-2 font-bold text-slate-700 dark:text-slate-200 mb-4">
+<span class="material-icons-outlined text-slate-400">schedule</span> ROTINA DO DIA
+                            </h2>
+<div class="divide-y divide-slate-50 dark:divide-slate-800">
+<div class="py-3 flex justify-between items-center">
+<span class="text-xs font-bold text-primary w-12">06:00</span>
+<span class="flex-1 text-sm font-medium">Acordar</span>
+<span class="text-[10px] text-slate-400 font-bold bg-slate-50 dark:bg-slate-800 px-2 py-1 rounded">15 MIN</span>
+</div>
+<div class="py-3 flex justify-between items-center">
+<span class="text-xs font-bold text-primary w-12">12:00</span>
+<span class="flex-1 text-sm font-medium">Almoço</span>
+<span class="text-[10px] text-slate-400 font-bold bg-slate-50 dark:bg-slate-800 px-2 py-1 rounded">45 MIN</span>
+</div>
+<div class="py-3 flex justify-between items-center">
+<span class="text-xs font-bold text-primary w-12">15:30</span>
+<span class="flex-1 text-sm font-medium flex items-center gap-2">
+<span class="material-icons-outlined text-sm">medical_services</span> Dentista
+                                    </span>
+</div>
+<div class="py-3 flex justify-between items-center">
+<span class="text-xs font-bold text-primary w-12">18:45</span>
+<span class="flex-1 text-sm font-medium flex items-center gap-2">
+<span class="material-icons-outlined text-sm">pets</span> Passear com o cachorro
+                                    </span>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-center mb-4">
+<h2 class="flex items-center gap-2 font-bold text-slate-700 dark:text-slate-200">
+<span class="material-icons-outlined text-slate-400">playlist_add_check</span> SECUNDÁRIAS
+                                </h2>
+<span class="text-xs font-semibold text-slate-400 uppercase">0/2</span>
+</div>
+<div class="space-y-2">
+<div class="p-3 border border-slate-100 dark:border-slate-800 rounded-xl flex items-center gap-3">
+<div class="w-5 h-5 rounded-full border-2 border-slate-200 dark:border-slate-700"></div>
+<span class="text-sm text-slate-600 dark:text-slate-400">Responder e-mails pendentes</span>
+</div>
+<div class="p-3 border border-slate-100 dark:border-slate-800 rounded-xl flex items-center gap-3">
+<div class="w-5 h-5 rounded-full border-2 border-slate-200 dark:border-slate-700"></div>
+<span class="text-sm text-slate-600 dark:text-slate-400">Limpar área de trabalho</span>
+</div>
+</div>
+</section>
+</div>
+<div class="lg:col-span-7 space-y-6">
+<section class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-center mb-6">
+<h2 class="flex items-center gap-2 font-bold text-slate-700 dark:text-slate-200">
+<span class="material-icons-outlined text-secondary">local_fire_department</span> HÁBITOS
+                                </h2>
+<span class="text-xs font-semibold text-slate-400 uppercase">2/6 concluídos</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 rounded-xl bg-orange-50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/30">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center">
+<span class="material-icons-outlined text-xs">check</span>
+</div>
+<span class="text-sm font-semibold text-secondary">Fazer academia</span>
+</div>
+<div class="flex items-center gap-1 text-secondary font-bold text-xs">
+<span class="material-icons-outlined text-xs">local_fire_department</span> 1
+                                    </div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<div class="w-6 h-6 border-2 border-slate-200 dark:border-slate-700 rounded-full"></div>
+<span class="text-sm">Organizar tarefas do dia</span>
+</div>
+<div class="flex items-center gap-1 text-slate-300 font-bold text-xs">
+<span class="material-icons-outlined text-xs">local_fire_department</span> 0
+                                    </div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<div class="w-6 h-6 border-2 border-slate-200 dark:border-slate-700 rounded-full"></div>
+<span class="text-sm">Aplicar para vagas</span>
+</div>
+<div class="flex items-center gap-1 text-slate-300 font-bold text-xs">
+<span class="material-icons-outlined text-xs">local_fire_department</span> 0
+                                    </div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<div class="w-6 h-6 border-2 border-slate-200 dark:border-slate-700 rounded-full"></div>
+<span class="text-sm">Beber 3 litros de água</span>
+</div>
+<div class="flex items-center gap-1 text-slate-300 font-bold text-xs">
+<span class="material-icons-outlined text-xs">local_fire_department</span> 0
+                                    </div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-orange-50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/30">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center">
+<span class="material-icons-outlined text-xs">check</span>
+</div>
+<span class="text-sm font-semibold text-secondary">Ler 30 minutos</span>
+</div>
+<div class="flex items-center gap-1 text-secondary font-bold text-xs">
+<span class="material-icons-outlined text-xs">local_fire_department</span> 4
+                                    </div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<div class="w-6 h-6 border-2 border-slate-200 dark:border-slate-700 rounded-full"></div>
+<span class="text-sm">Dormir no horário</span>
+</div>
+<div class="flex items-center gap-1 text-slate-300 font-bold text-xs">
+<span class="material-icons-outlined text-xs">local_fire_department</span> 5
+                                    </div>
+</div>
+</div>
+<div class="mt-8 border-t border-slate-50 dark:border-slate-800 pt-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xs font-bold text-slate-400 uppercase">Histórico de Conclusão</h3>
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+<button class="px-3 py-1 bg-white dark:bg-slate-700 text-primary text-[10px] font-bold rounded shadow-sm">7D</button>
+<button class="px-3 py-1 text-slate-400 text-[10px] font-bold">30D</button>
+<button class="px-3 py-1 text-slate-400 text-[10px] font-bold">90D</button>
+</div>
+</div>
+<div class="h-32 relative mt-4">
+<svg class="w-full h-full" viewBox="0 0 100 40">
+<path class="text-secondary" d="M0,35 L15,30 L30,25 L45,25 L60,25 L75,32 L90,32 L100,28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+<circle class="fill-secondary" cx="100" cy="28" r="2"></circle>
+</svg>
+<div class="flex justify-between mt-2 text-[8px] font-bold text-slate-300 uppercase">
+<span>28/12</span>
+<span>30/12</span>
+<span>01/01</span>
+<span class="text-secondary">Hoje</span>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-50 dark:border-slate-800">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xs font-bold text-slate-400 uppercase">Mapa de Atividade (90 dias)</h3>
+<div class="flex items-center gap-2 text-[9px] text-slate-400 font-bold uppercase">
+<span>Menos</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-sm bg-slate-100 dark:bg-slate-800"></div>
+<div class="w-2 h-2 rounded-sm bg-orange-200"></div>
+<div class="w-2 h-2 rounded-sm bg-orange-400"></div>
+<div class="w-2 h-2 rounded-sm bg-secondary"></div>
+</div>
+<span>Mais</span>
+</div>
+</div>
+<div class="github-grid">
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-orange-200"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-orange-200"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-orange-200"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-orange-200"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-orange-200"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-orange-200"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-orange-200"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-orange-400"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-secondary"></div>
+<div class="github-cell bg-orange-200"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800"></div>
+<div class="github-cell bg-slate-100 dark:bg-slate-800 border-2 border-primary"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around p-3">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-icons-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase">Execução</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons-outlined">edit_note</span>
+<span class="text-[10px] font-bold uppercase">Plano</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons-outlined">ads_click</span>
+<span class="text-[10px] font-bold uppercase">Objetivos</span>
+</button>
+</div>
+
+</body></html>

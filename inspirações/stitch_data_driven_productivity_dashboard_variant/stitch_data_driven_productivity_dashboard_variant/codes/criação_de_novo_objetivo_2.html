@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Foco Total: To-Do &amp; Pomodoro Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --bg-sidebar: #1e293b;
+            --bg-main: #f8fafc;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
+        .pie-chart {
+            background: conic-gradient(
+                #10b981 0% 45%, 
+                #3b82f6 45% 70%, 
+                #f59e0b 70% 85%, 
+                #ef4444 85% 100%
+            );
+            border-radius: 50%;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10b981",
+                        secondary: "#64748b",
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex h-screen overflow-hidden">
+<aside class="w-64 bg-slate-900 text-slate-300 flex flex-col border-r border-slate-800 shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined filled-icon">bolt</span>
+</div>
+<span class="text-xl font-bold text-white tracking-tight">Produtiv</span>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Hábitos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-semibold border border-primary/20" href="#">
+<span class="material-symbols-outlined filled-icon">check_box</span>
+<span class="text-sm">Foco Total</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">flag</span>
+<span class="text-sm font-medium">Objetivos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Relatórios</span>
+</a>
+</nav>
+<div class="p-6 border-t border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-700 overflow-hidden">
+<img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMA20s51yIEeiT4LmIBkDg4pTOaI26ol8PleuOiDIEnVXDO2RqO2oHU8KwyxmtblHj24F8QFWgTFaWVA9JOt1H3zFPbMUCGiZHyCpSR__cXXoYkhbgPSYFHR6N8jV6K1Gk1RQ-mhJzj6ZYXtOtYJvT3R9Tvbcm5A4QSHwufxgi2bUoTdv7JgH6_4XCBPF2H6qgE9R9GNtbvIkoOvUZiyzcBrW-agWqEpCPC3q7jm_NQhkxBoUVvBWE5uDKmGhCaLFuhb6o_gQKLqDm"/>
+</div>
+<div>
+<p class="text-xs font-bold text-white">Usuário Pro</p>
+<p class="text-[10px] text-slate-500">Configurações</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-slate-50 dark:bg-slate-950">
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md px-8 flex items-center justify-between">
+<h1 class="text-xl font-bold">Foco Total</h1>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:border-slate-800"></div>
+<div class="flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 px-3 py-1.5 rounded-full text-emerald-600 dark:text-emerald-400 font-bold text-sm">
+<span class="material-symbols-outlined text-sm filled-icon">timer</span>
+<span>120m Hoje</span>
+</div>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden p-8 gap-8">
+<section class="flex-[1.2] flex flex-col min-w-0">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-lg font-bold flex items-center gap-2">
+                        Backlog de Tarefas
+                        <span class="text-xs font-normal bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded-full">12 pendentes</span>
+</h2>
+<button class="flex items-center gap-1 text-primary font-bold text-sm hover:underline">
+<span class="material-symbols-outlined text-lg">add</span> Nova Tarefa
+                    </button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar pr-2 space-y-4">
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border-2 border-primary shadow-sm relative group">
+<div class="absolute right-4 top-5 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-primary"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-1 hover:text-red-500"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 w-5 h-5 border-2 border-primary rounded-full flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight">Implementar API de Autenticação</h3>
+<p class="text-sm text-slate-500 mt-0.5">Criar endpoints de login e registro no backend</p>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase rounded-md tracking-wider">DevOps</span>
+<span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold uppercase rounded-md tracking-wider">Urgente</span>
+</div>
+<div class="flex items-center gap-2 text-slate-400">
+<span class="text-[10px] font-bold uppercase tracking-wider">Pomodoros:</span>
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined text-xs filled-icon">circle</span>
+<span class="material-symbols-outlined text-xs filled-icon">circle</span>
+<span class="material-symbols-outlined text-xs">circle</span>
+<span class="material-symbols-outlined text-xs">circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-5 h-5 border-2 border-slate-300 dark:border-slate-700 rounded-full"></div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight">Revisar Documentação Técnica</h3>
+<p class="text-sm text-slate-500 mt-0.5">Atualizar README do projeto principal</p>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase rounded-md tracking-wider">Estudo</span>
+</div>
+<div class="flex items-center gap-2 text-slate-400">
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-xs">circle</span>
+<span class="material-symbols-outlined text-xs">circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-all opacity-70">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-5 h-5 border-2 border-slate-300 dark:border-slate-700 rounded-full"></div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight">Design de Mockups: Dashboard</h3>
+<p class="text-sm text-slate-500 mt-0.5">Finalizar telas de analytics e configurações</p>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase rounded-md tracking-wider">Design</span>
+</div>
+<div class="flex items-center gap-2 text-slate-400">
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-xs filled-icon text-primary">circle</span>
+<span class="material-symbols-outlined text-xs filled-icon text-primary">circle</span>
+<span class="material-symbols-outlined text-xs">circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-5 h-5 border-2 border-slate-300 dark:border-slate-700 rounded-full"></div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white leading-tight">Configurar Pipeline de CI/CD</h3>
+<p class="text-sm text-slate-500 mt-0.5">GitHub Actions para deploy automático em produção</p>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase rounded-md tracking-wider">DevOps</span>
+</div>
+<div class="flex items-center gap-2 text-slate-400">
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-xs">circle</span>
+<span class="material-symbols-outlined text-xs">circle</span>
+<span class="material-symbols-outlined text-xs">circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<aside class="flex-[0.8] flex flex-col gap-8 min-w-[340px]">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-[32px] border border-slate-200 dark:border-slate-800 shadow-xl flex flex-col items-center text-center">
+<span class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-4">Pomodoro Ativo</span>
+<h3 class="text-lg font-bold text-slate-800 dark:text-white mb-8 px-4 leading-snug">Implementar API de Autenticação</h3>
+<div class="relative flex items-center justify-center mb-8">
+<svg class="w-48 h-48 -rotate-90">
+<circle class="text-slate-100 dark:text-slate-800" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="138" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-5xl font-black tracking-tighter tabular-nums" style="font-size: 48px;">24:12</span>
+</div>
+</div>
+<div class="flex items-center gap-4 w-full px-4">
+<button class="flex-1 py-4 bg-slate-100 dark:bg-slate-800 rounded-2xl font-bold hover:bg-slate-200 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">stop</span>
+</button>
+<button class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/30 hover:bg-emerald-600 transition-all scale-110">
+<span class="material-symbols-outlined text-4xl filled-icon">pause</span>
+</button>
+<button class="flex-1 py-4 bg-slate-100 dark:bg-slate-800 rounded-2xl font-bold hover:bg-slate-200 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">skip_next</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-[24px] border border-slate-200 dark:border-slate-800 shadow-sm flex-1">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-6">Produtividade (Analytics)</h2>
+<div class="flex items-center gap-6 mb-8">
+<div class="w-24 h-24 pie-chart shrink-0 shadow-inner"></div>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-xs">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-medium">DevOps (45%)</span>
+</div>
+<div class="flex items-center gap-2 text-xs">
+<div class="w-2 h-2 rounded-full bg-blue-500"></div>
+<span class="font-medium">Design (25%)</span>
+</div>
+<div class="flex items-center gap-2 text-xs">
+<div class="w-2 h-2 rounded-full bg-amber-500"></div>
+<span class="font-medium">Estudo (15%)</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<span>Outros (15%)</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800/50">
+<p class="text-[10px] font-bold text-slate-500 uppercase">Hoje</p>
+<p class="text-xl font-bold">8 Tarefas</p>
+<p class="text-[10px] text-emerald-500 font-bold mt-1">+2 que ontem</p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800/50">
+<p class="text-[10px] font-bold text-slate-500 uppercase">Foco Médio</p>
+<p class="text-xl font-bold">4.2h</p>
+<p class="text-[10px] text-slate-400 font-bold mt-1">Sessão: 25m</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+
+</body></html>

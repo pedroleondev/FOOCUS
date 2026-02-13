@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Central de Objetivos - Planejamento Semanal</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10b981", // Emerald-500
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-200">
+<header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-40">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-primary text-3xl">track_changes</span>
+<h1 class="font-bold text-xl tracking-tight">Central de Objetivos</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-round text-slate-500 dark:text-slate-400">dark_mode</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">
+                    JD
+                </div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-8">
+<div class="flex flex-col items-center mb-10">
+<p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">Semana</p>
+<div class="flex items-center gap-6">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-round">chevron_left</span>
+</button>
+<h2 class="text-2xl font-bold">15 de dezembro</h2>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-round">chevron_right</span>
+</button>
+</div>
+<button class="mt-2 text-sm text-slate-500 flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-icons-round text-sm">history</span>
+                Semana atual
+            </button>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-12 text-center mb-8 shadow-sm">
+<div class="bg-slate-50 dark:bg-slate-800/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<span class="material-icons-round text-slate-400 text-3xl">calendar_today</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Semana sem planejamento</h3>
+<p class="text-slate-500 dark:text-slate-400 mb-8 max-w-md mx-auto">Esta semana ainda não possui um planejamento registrado. Organize suas metas e tarefas agora.</p>
+<button class="bg-primary hover:bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 mx-auto transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20" onclick="toggleModal('planning-modal')">
+<span class="material-icons-round">add</span>
+                Planejar semana
+            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm relative group cursor-pointer hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Segunda-feira</p>
+<p class="text-3xl font-black">15</p>
+</div>
+<button class="text-slate-300 hover:text-primary transition-colors">
+<span class="material-icons-round text-xl">add_circle_outline</span>
+</button>
+</div>
+<div class="space-y-2">
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+<div class="h-2 w-2/3 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm cursor-pointer hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Terça-feira</p>
+<p class="text-3xl font-black text-slate-300 dark:text-slate-700">16</p>
+</div>
+<button class="text-slate-300">
+<span class="material-icons-round text-xl">add_circle_outline</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm cursor-pointer hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Quarta-feira</p>
+<p class="text-3xl font-black text-slate-300 dark:text-slate-700">17</p>
+</div>
+<button class="text-slate-300">
+<span class="material-icons-round text-xl">add_circle_outline</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm cursor-pointer hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Quinta-feira</p>
+<p class="text-3xl font-black text-slate-300 dark:text-slate-700">18</p>
+</div>
+<button class="text-slate-300">
+<span class="material-icons-round text-xl">add_circle_outline</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm cursor-pointer hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Sexta-feira</p>
+<p class="text-3xl font-black text-slate-300 dark:text-slate-700">19</p>
+</div>
+<button class="text-slate-300">
+<span class="material-icons-round text-xl">add_circle_outline</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm cursor-pointer hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Sábado</p>
+<p class="text-3xl font-black text-slate-300 dark:text-slate-700">20</p>
+</div>
+<button class="text-slate-300">
+<span class="material-icons-round text-xl">add_circle_outline</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm cursor-pointer hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Domingo</p>
+<p class="text-3xl font-black text-slate-300 dark:text-slate-700">21</p>
+</div>
+<button class="text-slate-300">
+<span class="material-icons-round text-xl">add_circle_outline</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden animate-in fade-in duration-300" id="planning-modal">
+<div class="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<div>
+<h3 class="text-xl font-bold">segunda-feira, 15 de dezembro</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider">Passo 2/4</span>
+</div>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-400" onclick="toggleModal('planning-modal')">
+<span class="material-icons-round">close</span>
+</button>
+</div>
+<div class="p-8 overflow-y-auto custom-scrollbar">
+<div class="mb-6">
+<h4 class="text-lg font-bold">Prioridades do dia (máx. 3)</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Selecione as atividades mais importantes para hoje.</p>
+</div>
+<div class="space-y-3">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Atividades disponíveis:</p>
+<label class="group block border border-slate-100 dark:border-slate-800 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-all">
+<div class="flex items-start gap-4">
+<input class="mt-1 w-5 h-5 rounded-full border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Quero lançar minha própria marca de roupas em 3 meses</p>
+<p class="font-medium">Decidir o nome</p>
+</div>
+</div>
+</label>
+<label class="group block border border-slate-100 dark:border-slate-800 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-all">
+<div class="flex items-start gap-4">
+<input class="mt-1 w-5 h-5 rounded-full border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Quero lançar minha própria marca de roupas em 3 meses</p>
+<p class="font-medium">Decidir o estilo</p>
+</div>
+</div>
+</label>
+<label class="group block border border-slate-100 dark:border-slate-800 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-all">
+<div class="flex items-start gap-4">
+<input class="mt-1 w-5 h-5 rounded-full border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Quero lançar minha própria marca de roupas em 3 meses</p>
+<p class="font-medium text-primary">Fazer pesquisa de mercado</p>
+</div>
+</div>
+</label>
+<label class="group block border border-slate-100 dark:border-slate-800 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-all">
+<div class="flex items-start gap-4">
+<input class="mt-1 w-5 h-5 rounded-full border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Quero lançar minha própria marca de roupas em 3 meses</p>
+<p class="font-medium">Criar a logo</p>
+</div>
+</div>
+</label>
+<label class="group block border border-slate-100 dark:border-slate-800 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-all">
+<div class="flex items-start gap-4">
+<input class="mt-1 w-5 h-5 rounded-full border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Quero lançar minha própria marca de roupas em 3 meses</p>
+<p class="font-medium">Procurar fornecedores</p>
+</div>
+</div>
+</label>
+</div>
+</div>
+<div class="p-6 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/20">
+<button class="text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-semibold transition-colors">Voltar</button>
+<button class="bg-primary hover:bg-emerald-600 text-white px-8 py-2.5 rounded-full font-semibold flex items-center gap-2 transition-all shadow-md">
+                    Continuar
+                    <span class="material-icons-round text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="max-w-md mx-auto flex justify-around p-2">
+<button class="flex flex-col items-center p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-round">play_circle</span>
+<span class="text-[10px] font-bold uppercase mt-1">Execução</span>
+</button>
+<button class="flex flex-col items-center p-2 text-primary">
+<span class="material-icons-round">calendar_today</span>
+<span class="text-[10px] font-bold uppercase mt-1">Plano</span>
+</button>
+<button class="flex flex-col items-center p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-round">track_changes</span>
+<span class="text-[10px] font-bold uppercase mt-1">Objetivos</span>
+</button>
+</div>
+</div>
+<script>
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        }
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            const modal = document.getElementById('planning-modal');
+            if (event.target == modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+
+</body></html>

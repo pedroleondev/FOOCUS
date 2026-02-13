@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cadastro e Configuração de Hábitos</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #10b981;
+            --accent: #f97316;
+            --background-light: #f8fafc;
+            --background-dark: #0f172a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10b981",
+                        accent: "#f97316",
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-900 dark:text-slate-100 transition-colors duration-200 overflow-hidden">
+<div class="fixed inset-0 z-0 overflow-y-auto p-8 opacity-40 grayscale-[0.2]">
+<header class="max-w-6xl mx-auto mb-8 flex justify-between items-center">
+<h1 class="text-3xl font-bold">Meus Hábitos</h1>
+<div class="flex gap-4">
+<div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+<span class="material-symbols-outlined text-accent filled-icon">local_fire_department</span>
+<div>
+<p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Melhor Sequência</p>
+<p class="text-xl font-bold">42 Dias</p>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div class="flex items-center gap-1 text-accent font-bold">
+<span class="material-symbols-outlined filled-icon text-sm">local_fire_department</span>
+<span>12</span>
+</div>
+</div>
+<h3 class="font-bold text-lg">Beber Água</h3>
+<p class="text-sm text-slate-500 mb-4">Meta: 2.5L por dia</p>
+<div class="flex gap-1">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+<div class="h-1 flex-1 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center text-accent">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex items-center gap-1 text-accent font-bold">
+<span class="material-symbols-outlined filled-icon text-sm">local_fire_department</span>
+<span>5</span>
+</div>
+</div>
+<h3 class="font-bold text-lg">Exercícios</h3>
+<p class="text-sm text-slate-500 mb-4">Meta: 45 min</p>
+<div class="flex gap-1">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div class="flex items-center gap-1 text-accent font-bold">
+<span class="material-symbols-outlined filled-icon text-sm">local_fire_department</span>
+<span>28</span>
+</div>
+</div>
+<h3 class="font-bold text-lg">Leitura Diária</h3>
+<p class="text-sm text-slate-500 mb-4">Meta: 20 páginas</p>
+<div class="flex gap-1">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+<div class="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-[24px] shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-8">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="text-2xl font-bold tracking-tight">Novo Hábito</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Configure sua nova rotina de sucesso.</p>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Nome do Hábito</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">edit</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-2xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-lg" placeholder="Ex: Meditação Matinal" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Frequência</label>
+<div class="flex justify-between gap-1">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-bold bg-primary text-white border-primary" type="button">D</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800" type="button">S</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800" type="button">T</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800" type="button">Q</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800" type="button">Q</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800" type="button">S</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-bold bg-primary text-white border-primary" type="button">S</button>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Horário Preferencial</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">schedule</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-2xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" type="time"/>
+</div>
+</div>
+</div>
+<div class="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<span class="font-bold text-sm">Configuração de Lembretes</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex gap-2">
+<span class="bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700">15 min antes</span>
+<span class="bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700">No horário</span>
+<button class="text-primary text-xs font-bold px-2 flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">add</span> Adicionar
+                            </button>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Meta de Sequência</label>
+<span class="text-accent font-bold text-sm">30 Dias</span>
+</div>
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="7" type="range" value="30"/>
+<div class="flex justify-between text-[10px] text-slate-400 uppercase font-bold tracking-widest px-1">
+<span>Iniciante (7d)</span>
+<span>Mestre (100d)</span>
+</div>
+</div>
+<div class="pt-6 flex gap-4">
+<button class="flex-1 py-4 px-6 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" type="button">
+                            Cancelar
+                        </button>
+<button class="flex-[2] py-4 px-6 bg-primary hover:bg-emerald-600 text-white rounded-2xl font-bold shadow-lg shadow-emerald-500/20 transition-all transform hover:scale-[1.01] active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
+                            Criar Hábito
+                            <span class="material-symbols-outlined">rocket_launch</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl rounded-full px-8 py-3 flex items-center gap-12 z-50">
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Painel</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined filled-icon">task_alt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Hábitos</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Progresso</span>
+</button>
+</div>
+
+</body></html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard de Sucesso - Central de Objetivos</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10b981", // Emerald-500
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen;
+            }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        .circular-progress {
+            --percentage: 0;
+            background: conic-gradient(var(--primary-color) calc(var(--percentage) * 1%), #e2e8f0 0);
+        }
+        .heatmap-cell {
+            aspect-ratio: 1/1;
+        }
+    </style>
+</head>
+<body class="flex">
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 h-screen sticky top-0 flex flex-col hidden lg:flex">
+<div class="p-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl font-bold">track_changes</span>
+<h1 class="font-bold text-xl tracking-tight">Central</h1>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-semibold">Execução</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-semibold">Plano</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">target</span>
+<span class="font-semibold">Objetivos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-emerald-50 dark:bg-emerald-900/20 text-primary rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-semibold">Sucesso</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined">dark_mode</span>
+<span class="font-semibold">Modo Escuro</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full">
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+<div>
+<h2 class="text-3xl font-bold tracking-tight">Dashboard de Sucesso</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Acompanhe sua consistência e progresso rumo aos objetivos.</p>
+</div>
+<div class="flex items-center gap-2 bg-white dark:bg-slate-900 p-1.5 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm">
+<button class="px-4 py-2 rounded-full text-sm font-medium bg-primary text-white shadow-lg shadow-emerald-500/20">Mensal</button>
+<button class="px-4 py-2 rounded-full text-sm font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Trimestral</button>
+<button class="px-4 py-2 rounded-full text-sm font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Anual</button>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold mb-1 uppercase tracking-wider">Objetivos em Andamento</p>
+<h3 class="text-4xl font-bold">12</h3>
+<p class="text-emerald-500 text-sm mt-2 flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span> +2 novos este mês
+                    </p>
+</div>
+<div class="relative w-20 h-20 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-slate-100 dark:text-slate-800" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="64" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-sm font-bold">70%</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold mb-1 uppercase tracking-wider">Hábitos Atuais</p>
+<h3 class="text-4xl font-bold">08</h3>
+<p class="text-emerald-500 text-sm mt-2 flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-sm">check_circle</span> 100% hoje
+                    </p>
+</div>
+<div class="relative w-20 h-20 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-slate-100 dark:text-slate-800" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="32" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-sm font-bold">85%</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold mb-1 uppercase tracking-wider">Taxa de Sucesso Semanal</p>
+<h3 class="text-4xl font-bold">92%</h3>
+<p class="text-slate-400 text-sm mt-2 flex items-center gap-1 font-medium">
+                        Meta: 90%
+                    </p>
+</div>
+<div class="relative w-20 h-20 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-slate-100 dark:text-slate-800" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="17" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-sm font-bold">92%</span>
+</div>
+</div>
+</div>
+<section class="mb-10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold">Objetivos Ativos</h3>
+<button class="text-sm font-semibold text-primary hover:underline">Ver todos</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div>
+<h4 class="font-bold">Treinar 5x por semana</h4>
+<p class="text-xs text-slate-400 uppercase font-semibold">Saúde &amp; Bem-estar</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-sm font-bold text-slate-900 dark:text-slate-100">80%</span>
+<p class="text-[10px] text-slate-400 font-bold uppercase">Progresso</p>
+</div>
+</div>
+<div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full mb-3">
+<div class="h-full bg-primary rounded-full" style="width: 80%"></div>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">task_alt</span> 
+                            Métrica: <strong>8/10 sessões</strong>
+</span>
+<span class="px-2 py-0.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 text-[10px] font-bold">NO PRAZO</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-500 flex items-center justify-center">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<h4 class="font-bold">Ler 12 livros no ano</h4>
+<p class="text-xs text-slate-400 uppercase font-semibold">Crescimento Pessoal</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-sm font-bold text-slate-900 dark:text-slate-100">42%</span>
+<p class="text-[10px] text-slate-400 font-bold uppercase">Progresso</p>
+</div>
+</div>
+<div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full mb-3">
+<div class="h-full bg-blue-500 rounded-full" style="width: 42%"></div>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bookmark</span> 
+                            Métrica: <strong>5/12 livros</strong>
+</span>
+<span class="px-2 py-0.5 rounded-lg bg-amber-50 dark:bg-amber-900/20 text-amber-600 text-[10px] font-bold">ATRASADO</span>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Histórico de Atividade</h3>
+<p class="text-sm text-slate-500">Intensidade de conclusão de tarefas</p>
+</div>
+<div class="flex items-center gap-2 text-[10px] font-bold text-slate-400">
+<span>Menos</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-slate-100 dark:bg-slate-800 rounded-sm"></div>
+<div class="w-3 h-3 bg-emerald-100 dark:bg-emerald-900/20 rounded-sm"></div>
+<div class="w-3 h-3 bg-emerald-300 dark:bg-emerald-700 rounded-sm"></div>
+<div class="w-3 h-3 bg-emerald-500 rounded-sm"></div>
+</div>
+<span>Mais</span>
+</div>
+</div>
+<div class="overflow-x-auto pb-2 custom-scrollbar">
+<div class="flex flex-col gap-1 min-w-[600px]">
+<div class="flex gap-1">
+<div class="w-8 text-[10px] font-bold text-slate-400 uppercase self-center">Seg</div>
+<div class="flex-1 grid grid-cols-12 gap-1">
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-300 rounded-sm"></div>
+<div class="heatmap-cell bg-slate-100 dark:bg-slate-800 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+<div class="heatmap-cell bg-slate-100 dark:bg-slate-800 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-300 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+</div>
+</div>
+<div class="flex gap-1">
+<div class="w-8 text-[10px] font-bold text-slate-400 uppercase self-center">Qua</div>
+<div class="flex-1 grid grid-cols-12 gap-1">
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-slate-100 dark:bg-slate-800 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-300 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-slate-100 dark:bg-slate-800 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-300 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+</div>
+</div>
+<div class="flex gap-1">
+<div class="w-8 text-[10px] font-bold text-slate-400 uppercase self-center">Sex</div>
+<div class="flex-1 grid grid-cols-12 gap-1">
+<div class="heatmap-cell bg-emerald-300 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-300 rounded-sm"></div>
+<div class="heatmap-cell bg-slate-100 dark:bg-slate-800 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-500 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-100 dark:bg-emerald-900/30 rounded-sm"></div>
+<div class="heatmap-cell bg-emerald-300 rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-lg font-bold mb-1">Consistência</h3>
+<p class="text-sm text-slate-500 mb-6">Últimos 30 dias</p>
+<div class="relative h-48 flex items-end gap-1 px-2">
+<div class="flex-1 bg-emerald-50 dark:bg-emerald-900/10 rounded-t-sm h-[40%] relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<div class="flex-1 bg-emerald-50 dark:bg-emerald-900/10 rounded-t-sm h-[55%] relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<div class="flex-1 bg-emerald-50 dark:bg-emerald-900/10 rounded-t-sm h-[50%] relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<div class="flex-1 bg-emerald-50 dark:bg-emerald-900/10 rounded-t-sm h-[75%] relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<div class="flex-1 bg-emerald-50 dark:bg-emerald-900/10 rounded-t-sm h-[90%] relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<div class="flex-1 bg-emerald-50 dark:bg-emerald-900/10 rounded-t-sm h-[85%] relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<div class="flex-1 bg-emerald-50 dark:bg-emerald-900/10 rounded-t-sm h-[95%] relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none">
+<path class="text-primary opacity-30" d="M 0 115 Q 40 80, 80 100 T 160 50 T 240 20 T 320 10" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-[10px] font-bold text-slate-400">01 NOV</span>
+<span class="text-[10px] font-bold text-slate-400">15 NOV</span>
+<span class="text-[10px] font-bold text-slate-400">30 NOV</span>
+</div>
+</div>
+</div>
+</main>
+<div class="lg:hidden fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50">
+<div class="max-w-md mx-auto flex justify-around p-2">
+<button class="flex flex-col items-center p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="text-[10px] font-bold uppercase mt-1">Execução</span>
+</button>
+<button class="flex flex-col items-center p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-bold uppercase mt-1">Plano</span>
+</button>
+<button class="flex flex-col items-center p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">target</span>
+<span class="text-[10px] font-bold uppercase mt-1">Objetivos</span>
+</button>
+<button class="flex flex-col items-center p-2 text-primary">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-[10px] font-bold uppercase mt-1">Sucesso</span>
+</button>
+</div>
+</div>
+
+</body></html>

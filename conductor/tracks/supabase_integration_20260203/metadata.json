@@ -1,0 +1,8 @@
+{
+  "track_id": "supabase_integration_20260203",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-03T22:45:00Z",
+  "updated_at": "2026-02-03T22:45:00Z",
+  "description": "Substituir dados mockados por integração real com Supabase, incluindo schema do banco, RLS e CRUD básico."
+}
