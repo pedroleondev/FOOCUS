@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="600" src="./FOOCUS%20LOGO.png" alt="FOOCUS LOGO">
+  <img width="600" src="https://s3.metagente360.cloud/pedroleondev/FOOCUS%20LOGO%20%281%29.png" alt="FOOCUS LOGO">
 </div>
 
 ## 🚀 Executando Localmente
